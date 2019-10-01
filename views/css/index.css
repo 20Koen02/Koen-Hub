@@ -40,13 +40,13 @@
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   background: #fafafa;
   margin: 0;
 }
 
 p {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 1.1em;
   font-weight: 300;
   line-height: 1.7em;
@@ -210,6 +210,7 @@ a.article:hover {
 }
 
 .navbar {
+  margin-bottom: 25px;
   border-radius: 5px;
   background-color: #ffe37f !important;
 }
@@ -218,7 +219,7 @@ a.article:hover {
   background-color: #ffe37f;
   padding: 10px;
   border-radius: 5px;
-  margin: 10px 0 10px 0;
+  margin: 15px 0 15px 0;
   overflow: auto;
 }
 
@@ -226,7 +227,7 @@ a.article:hover {
   background-color: #ffe37f;
   padding: 10px;
   border-radius: 5px;
-  margin: 10px 0 10px 0;
+  margin: 15px 0 15px 0;
 }
 
 #graph p {
@@ -256,15 +257,19 @@ a.article:hover {
 }
 
 .btn-github {
-  background-color: #24292E;
+  background-color: #24292e;
   color: #ffffff;
   text-align: left;
 }
 
 .btn-gitlab {
-  background-color: #FC6D26;
+  background-color: #fc6d26;
   color: #ffffff;
   text-align: left;
+}
+
+.navbarheight {
+  height: 38px;
 }
 
 /* ---------------------------------------------------
