@@ -1,42 +1,42 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap");
 .bg-primary-color {
-  background-color: #ffcc19;
+  background-color: #48c5ff;
 }
 
 .bg-primary-color-10 {
-  background-color: #fff9e5;
+  background-color: white;
 }
 
 .bg-primary-color-20 {
-  background-color: #ffeeb2;
+  background-color: #e1f5ff;
 }
 
 .bg-primary-color-30 {
-  background-color: #ffe37f;
+  background-color: #aee5ff;
 }
 
 .bg-primary-color-40 {
-  background-color: #ffd74c;
+  background-color: #7bd5ff;
 }
 
 .bg-primary-color-50 {
-  background-color: #ffcc19;
+  background-color: #48c5ff;
 }
 
 .bg-primary-color-60 {
-  background-color: #e5b200;
+  background-color: #15b5ff;
 }
 
 .bg-primary-color-70 {
-  background-color: #b28b00;
+  background-color: #009ae1;
 }
 
 .bg-primary-color-80 {
-  background-color: #7f6300;
+  background-color: #0077ae;
 }
 
 .bg-primary-color-90 {
-  background-color: #4c3b00;
+  background-color: #00547b;
 }
 
 body {
@@ -108,7 +108,7 @@ a:focus {
 #sidebar {
   min-width: 250px;
   max-width: 250px;
-  background: #ffcc19;
+  background: #48c5ff;
   color: #6b6b6b;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
@@ -120,7 +120,7 @@ a:focus {
 
 #sidebar .sidebar-header {
   padding: 20px;
-  background: #e5b200;
+  background: #15b5ff;
 }
 
 #sidebar .sidebar-header h3,
@@ -131,7 +131,7 @@ a:focus {
 
 #sidebar ul.components {
   padding: 20px 0;
-  border-bottom: 1px solid #b28b00;
+  border-bottom: 1px solid #009ae1;
 }
 
 #sidebar ul p {
@@ -146,14 +146,14 @@ a:focus {
 }
 
 #sidebar ul li a:hover {
-  color: #ffcc19;
+  color: #48c5ff;
   background: #6b6b6b;
 }
 
 #sidebar ul li.active > a,
 a[aria-expanded="true"] {
   color: #6b6b6b;
-  background: #e5b200;
+  background: #15b5ff;
 }
 
 a[data-toggle="collapse"] {
@@ -172,7 +172,7 @@ a[data-toggle="collapse"] {
 ul ul a {
   font-size: 0.9em !important;
   padding-left: 30px !important;
-  background: #e5b200;
+  background: #15b5ff;
 }
 
 ul.CTAs {
@@ -189,12 +189,12 @@ ul.CTAs a {
 
 a.download {
   background: #6b6b6b;
-  color: #ffcc19;
+  color: #48c5ff;
 }
 
 a.article,
 a.article:hover {
-  background: #e5b200 !important;
+  background: #15b5ff !important;
   color: #6b6b6b !important;
 }
 
@@ -212,11 +212,11 @@ a.article:hover {
 .navbar {
   margin-bottom: 40px;
   border-radius: 5px;
-  background-color: #ffe37f !important;
+  background-color: #aee5ff !important;
 }
 
 #table {
-  background-color: #ffe37f;
+  background-color: #aee5ff;
   padding: 10px;
   border-radius: 5px;
   margin: 0 0 0 0;
@@ -224,7 +224,7 @@ a.article:hover {
 }
 
 #graph {
-  background-color: #ffe37f;
+  background-color: #aee5ff;
   padding: 10px;
   border-radius: 5px;
   margin: 30px 0 0 0;
@@ -248,7 +248,7 @@ a.article:hover {
 }
 
 #networkhead {
-  background-color: #ffe37f;
+  background-color: #aee5ff;
   padding: 10px;
   border-radius: 5px;
   margin: 30px 0 10px 0;
