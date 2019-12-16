@@ -208,9 +208,12 @@ $displacement: 3px;
   background-color: #ffcc19;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
-  svg {
-    height: 40px;
-    width: auto;
-    margin: 20px;
-  }
+}
+
+label {
+  cursor: text;
+}
+
+button {
+  cursor: pointer;
 }
