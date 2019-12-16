@@ -11,11 +11,7 @@ app.set('view options', {
 app.use(express.static(__dirname + '/views'));
 
 app.get('/', async function(req, res) {
-    res.render('pages/index');
-});
-
-app.get('/webtracker', async function(req, res) {
-    res.render('pages/webtracker');
+    res.render('pages/login');
 });
 
 http.listen(4040, () => console.log(`App listening on port 4040!`));
