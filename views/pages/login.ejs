@@ -1,19 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="css/login.css">
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="css/login.css" />
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+      crossorigin="anonymous"
+    ></script>
     <title>Koen Portal</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="session">
-        <div class="left">
+      <div class="left"></div>
+      <form action="" class="log-in" autocomplete="off">
+        <h4>Welcome back, <span>Koen</span></h4>
+        <p>Log in to access your portal:</p>
+        <div class="floating-label">
+          <input
+            placeholder="Username"
+            type="text"
+            name="username"
+            id="username"
+            autocomplete="off"
+          />
+          <label for="username">Username:</label>
+          <div class="icon">
+            <?xml version="1.0" encoding="UTF-8"?>
+            <svg
+              aria-hidden="true"
+              focusable="false"
+              data-prefix="fas"
+              data-icon="user"
+              role="img"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 448 512"
+            >
+              <path
+                fill="currentColor"
+                d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"
+                class=""
+              ></path>
+            </svg>
+          </div>
         </div>
         <form action="/login" class="log-in" autocomplete="off" method="post">
             <h4>Welcome back, <span>Koen</span></h4>
@@ -50,6 +82,5 @@
             <button type="submit">Log in</button>
         </form>
     </div>
-</body>
-
+  </body>
 </html>

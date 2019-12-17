@@ -304,9 +304,11 @@ input:focus {
   border-bottom-left-radius: 10px;
 }
 
-.left svg {
-  height: 40px;
-  width: auto;
-  margin: 20px;
+label {
+  cursor: text;
+}
+
+button {
+  cursor: pointer;
 }
 /*# sourceMappingURL=login.css.map */
