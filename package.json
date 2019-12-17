@@ -9,7 +9,16 @@
   "author": "Koen van Wijngaarden",
   "license": "ISC",
   "dependencies": {
+    "argon2": "^0.25.1",
+    "argon2-ffi": "^1.1.2",
+    "cookie-parser": "^1.4.4",
+    "cors": "^2.8.5",
     "ejs": "^2.7.1",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "express-session": "^1.17.0",
+    "jsonwebtoken": "^8.5.1",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "sqlite3": "^4.1.1"
   }
 }
