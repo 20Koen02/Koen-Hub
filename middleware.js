@@ -1,6 +1,7 @@
 let jwt = require('jsonwebtoken');
 var sqlite3 = require('sqlite3').verbose();
-var db = new sqlite3.Database('database.sqlite3');
+var db = new sqlite3.Database('database.sqlite3', sqlite3.OPEN_READONLY);
+
 const argon2 = require('argon2');
 
 
@@ -20,7 +21,7 @@ let generateToken = async (req, res) => {
         return res.redirect('/login');
     }
 
-    db.all(`SELECT * FROM passwords WHERE username="${username}"`, function (err, rows) {
+    db.all(`SELECT * FROM passwords WHERE username=(?)`, username, function (err, rows) {
         if (rows.length == 0) {
             return res.redirect('/login');
         }
