@@ -1,8 +1,10 @@
+const c = require('chalk');
+const { log } = require('./log')
 let jwt = require('jsonwebtoken');
-var sqlite3 = require('sqlite3').verbose();
-var db = new sqlite3.Database('database.sqlite3', sqlite3.OPEN_READONLY);
-
+require('dotenv').config()
 const argon2 = require('argon2');
+const iplocation = require("iplocation").default;
+const { getName } = require('country-list');
 
 
 async function checkPassword(password, hash) {
@@ -17,33 +19,30 @@ let generateToken = async (req, res) => {
     let username = req.body.username;
     let password = req.body.password;
 
+
     if (!username || !password) {
         return res.redirect('/login');
     }
+    if (username != process.env.USER) {
+        return res.redirect('/login');
+    }
 
-    db.all(`SELECT * FROM passwords WHERE username=(?)`, username, function (err, rows) {
-        if (rows.length == 0) {
+    checkPassword(password, process.env.HASH).then((result) => {
+        if (result) {
+            let token = jwt.sign({ username: process.env.USER },
+                process.env.SECR,
+                {
+                    expiresIn: '1d'
+                }
+            );
+            res.cookie('token', token, {
+                expires: new Date(Date.now() + 86400000)
+            });
+            return res.redirect('/');
+        } else {
             return res.redirect('/login');
         }
-        checkPassword(password, rows[0]["hash"]).then((result) => {
-            if (result) {
-                db.all(`SELECT * FROM jwt`, async function(err, rows) {
-                    let token = jwt.sign({ username: username },
-                        rows[0]["key"],
-                        {
-                            expiresIn: '1d'
-                        }
-                    );
-                    res.cookie('token', token, {
-                        expires: new Date(Date.now() + 86400000)
-                    });
-                    return res.redirect('/');
-                })
-            } else {
-                return res.redirect('/login');
-            }
-        })
-    });
+    })
 };
 
 let checkToken = async (req, res) => {
@@ -52,19 +51,30 @@ let checkToken = async (req, res) => {
         if (!token) {
             return res.redirect('/login');
         }
-        db.all(`SELECT * FROM jwt`, async function(err, rows) {
-            try {
-                const decrypt = await jwt.verify(token, rows[0]["key"])
-                console.log(req.ip +"\tlogged in at\t" + Date(Date.now()).toString())
-                return res.render('pages/index')
-            } catch (e) {
-                return res.redirect('/login');
-            }
-        })
+
+        try {
+            const decrypt = await jwt.verify(token, process.env.SECR)
+
+            iplocation(req.ip)
+                .then((res) => {
+                    log(c.magenta(req.ip) + " logged in from " + c.magenta(res.region) + ", " + c.magenta(res.countryCode))
+
+                })
+                .catch(err => {
+                    log(c.magenta(req.ip) + " logged in")
+                });
+
+            return res.render('pages/index')
+        } catch (e) {
+            return res.redirect('/login');
+        }
+
     } catch (err) {
         res.redirect('/login');
     }
 };
+
+
 
 module.exports = {
     checkToken: checkToken,

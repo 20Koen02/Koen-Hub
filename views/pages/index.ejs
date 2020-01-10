@@ -26,7 +26,7 @@
                     <a href="#">Home</a>
                 </li>
                 <li>
-                    <a href="#">Tool 5</a>
+                    <a href="#">Agenda</a>
                 </li>
             </ul>
             <ul class="list-unstyled CTAs">
@@ -147,7 +147,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
         integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
         crossorigin="anonymous"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.slim.js"
+        integrity="sha256-Dul4c09cdrWKXVtallPxF558lwxMwCC8dXJdZ0PVW54=" crossorigin="anonymous"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             $('#sidebarCollapse').on('click', function () {
@@ -155,6 +156,31 @@
                 $(this).toggleClass('active');
             });
         });
+
+        function getCookie(cname) {
+            var name = cname + "=";
+            var decodedCookie = decodeURIComponent(document.cookie);
+            var ca = decodedCookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "empty";
+        }
+
+
+        var socket = io.connect();
+        socket.on('connect', function () {
+            socket.emit('authenticate', { token: getCookie("token") });
+        });
+
+
+
     </script>
 </body>
 
