@@ -6,11 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Home - Koen Portal</title>
+    <title>Agenda - Koen Portal</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/agenda.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
     <script src="https://use.fontawesome.com/releases/v5.12.0/js/all.js" data-auto-replace-svg="nest"></script>
 </head>
 
@@ -21,13 +23,13 @@
                 <h3>Koen Portal</h3>
             </div>
             <ul class="list-unstyled components">
-                <li class="active">
+                <li>
                     <a href="/">Home</a>
                 </li>
-                <li>
+                <li class="active">
                     <a href="/agenda">Agenda</a>
                 </li>
-                <li >
+                <li>
                     <a href="/school">School</a>
                 </li>
             </ul>
@@ -73,70 +75,39 @@
                 </div>
             </nav>
 
-            <div class="cont-component">
-                <h2>Lorem Ipsum Dolor</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                    et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                    dolore eu
-                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                    deserunt mollit anim id est laborum.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                    et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                    dolore eu
-                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                    deserunt mollit anim id est laborum.</p>
-            </div>
+            <main id="todolist">
+                <h1>
+                    Roster Blacklist
+                    <span>Remove items from your roster</span></h1>
+                <ul>
+                    <li class=""><span class="label">ISLPR_differentiatie.onderwijs_01</span>
+                        <div class="actions">
+                            <button type="button" aria-label="Delete" title="Delete" class="btn-picto">
+                                <i aria-hidden="true" class="material-icons mi-icon">delete</i>
+                            </button>
+                        </div>
+                    </li>
+                    <li class="">
+                        <span class="label">ISLPR_propedeuse_lab/01</span>
+                        <div class="actions">
+                            <button type="button" aria-label="Delete" title="Delete" class="btn-picto">
+                                <i aria-hidden="true" class="material-icons mi-icon">delete</i>
+                            </button>
+                        </div>
+                    </li>
+                </ul>
+                
+                <form name="newform">
+                    <label for="newitem">
+                        Add to blacklist
+                    </label>
+                    <input type="text" name="newitem" id="newitem">
+                    <button type="submit">Add item</button>
+                </form>
+            </main>
 
-            <div class="tile-container">
-                <div class="cont-tile">
-                    <h2>Lorem Ipsum Dolor</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                        incididunt ut labore
-                        et
-                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                        nisi ut
-                        aliquip
-                        ex ea commodo consequat.</p>
-                </div>
-                <div class="cont-tile">
-                    <h2>Lorem Ipsum Dolor</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                        incididunt ut labore
-                        et
-                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                        nisi ut
-                        aliquip
-                        ex ea commodo consequat.</p>
-                </div>
-                <div class="cont-tile">
-                    <h2>Lorem Ipsum Dolor</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                        incididunt ut labore
-                        et
-                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                        nisi ut
-                        aliquip
-                        ex ea commodo consequat.</p>
-                </div>
-            </div>
 
-            <div class="cont-component">
-                <h2>Lorem Ipsum Dolor</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                    et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                    dolore eu
-                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                    deserunt mollit anim id est laborum.</p>
-            </div>
+
         </div>
     </div>
 
@@ -180,6 +151,9 @@
         socket.on('connect', function () {
             socket.emit('authenticate', { token: getCookie("token") });
         });
+
+
+
     </script>
 </body>
 

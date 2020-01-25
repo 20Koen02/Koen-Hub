@@ -25,7 +25,15 @@ app.post('/login', middleware.generateToken);
 app.get('/login', function (req, res) {
     res.render('pages/login')
 })
-app.get('/', middleware.checkToken);
+app.get('/', middleware.checkToken, function (req, res) {
+    res.render('pages/index')
+});
+app.get('/agenda', middleware.checkToken, function (req, res) {
+    res.render('pages/agenda')
+});
+app.get('/school', middleware.checkToken, function (req, res) {
+    res.render('pages/school')
+});
 
 io.on('connection', socketioJwt.authorize({
     secret: process.env.SECR,
@@ -34,5 +42,7 @@ io.on('connection', socketioJwt.authorize({
 io.on('authenticated', function (socket) {
     log(c.magenta(socket.decoded_token.username) + " authenticated to a socket");
 });
+
+
 
 server.listen(port, () => log(`Server is listening on port: ${c.magenta(port)}`));

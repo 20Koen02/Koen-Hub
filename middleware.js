@@ -15,21 +15,35 @@ async function checkPassword(password, hash) {
     }
 }
 
+function getLocation(req, succ = false) {
+    iplocation(req.ip)
+        .then((res) => {
+            if (!res.region) throw "";
+            log(c.magenta(req.ip) + " " + ((succ) ? c.green("succesfully") : c.red("unsuccessfully")) + " logged in from " + c.magenta(res.region) + ", " + c.magenta(res.countryCode))
+
+        })
+        .catch(err => {
+            log(c.magenta(req.ip) + " " + ((succ) ? c.green("succesfully") : c.red("unsuccessfully")) + " logged in")
+        });
+}
+
 let generateToken = async (req, res) => {
     let username = req.body.username;
     let password = req.body.password;
 
 
     if (!username || !password) {
+        getLocation(req, false)
         return res.redirect('/login');
     }
-    if (username != process.env.USER) {
+    if (username != process.env.USRN) {
+        getLocation(req, false)
         return res.redirect('/login');
     }
 
     checkPassword(password, process.env.HASH).then((result) => {
         if (result) {
-            let token = jwt.sign({ username: process.env.USER },
+            let token = jwt.sign({ username: process.env.USRN },
                 process.env.SECR,
                 {
                     expiresIn: '1d'
@@ -38,43 +52,27 @@ let generateToken = async (req, res) => {
             res.cookie('token', token, {
                 expires: new Date(Date.now() + 86400000)
             });
+
+            getLocation(req, true)
             return res.redirect('/');
         } else {
+            getLocation(req, false)
             return res.redirect('/login');
         }
     })
 };
 
-let checkToken = async (req, res) => {
+let checkToken = async (req, res, next) => {
     const token = req.cookies.token || '';
+    if (!token) return res.redirect('/login');
+
     try {
-        if (!token) {
-            return res.redirect('/login');
-        }
-
-        try {
-            const decrypt = await jwt.verify(token, process.env.SECR)
-
-            iplocation(req.ip)
-                .then((res) => {
-                    log(c.magenta(req.ip) + " logged in from " + c.magenta(res.region) + ", " + c.magenta(res.countryCode))
-
-                })
-                .catch(err => {
-                    log(c.magenta(req.ip) + " logged in")
-                });
-
-            return res.render('pages/index')
-        } catch (e) {
-            return res.redirect('/login');
-        }
-
-    } catch (err) {
-        res.redirect('/login');
+        const decrypt = await jwt.verify(token, process.env.SECR)
+        return next()
+    } catch (e) {
+        return res.redirect('/login');
     }
 };
-
-
 
 module.exports = {
     checkToken: checkToken,
