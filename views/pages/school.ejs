@@ -121,7 +121,7 @@
                                         class=""></path>
                                 </svg> IPROP</h2>
                             <p class="f-d">ICT Project- vaardigheden</p>
-                            <p class="f-m" hidden>ICT Projectvaardigheden</p>
+                            <p class="f-m" style="display: none;">ICT Projectvaardigheden</p>
                         </div>
                         <div onclick="window.open('https://hogeschoolleiden.sharepoint.com/sites/og1920.iooa-objectgeorienteerd-ontwerpen-en-programmeren-2');"
                             class="cont-tile hvr-sweep-to-right">
@@ -144,7 +144,7 @@
                                         class=""></path>
                                 </svg> ISLPR</h2>
                             <p class="f-d">Studieloopbaan- begeleiding</p>
-                            <p class="f-m" hidden>Studieloopbaanbegeleiding</p>
+                            <p class="f-m" style="display: none;">Studieloopbaanbegeleiding</p>
                         </div>
                     </div>
                 </div>
@@ -166,6 +166,21 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.slim.js"
         integrity="sha256-Dul4c09cdrWKXVtallPxF558lwxMwCC8dXJdZ0PVW54=" crossorigin="anonymous"></script>
     <script type="text/javascript">
+        function setMobile(x) {
+            if (x.matches) { // If media query matches
+                $(".f-d").hide();
+                $(".f-m").show();
+            } else {
+                $(".f-d").show();
+                $(".f-m").hide();
+            }
+        }
+
+        var x = window.matchMedia("(max-width: 1050px)");
+        setMobile(x);
+        x.addListener(setMobile);
+
+
         $(document).ready(function () {
             $('#sidebarCollapse').on('click', function () {
                 $('#sidebar').toggleClass('active');
