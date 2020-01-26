@@ -31,7 +31,7 @@ app.get('/', middleware.checkToken, function (req, res) {
 app.get('/agenda', middleware.checkToken, function (req, res) {
     res.render('pages/agenda')
 });
-app.get('/school', middleware.checkToken, function (req, res) {
+app.get('/school', function (req, res) {
     res.render('pages/school')
 });
 
